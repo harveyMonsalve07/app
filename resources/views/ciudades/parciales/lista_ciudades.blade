@@ -1,0 +1,16 @@
+<select class="form-control" name="ciudad" id="ciudad" required>
+	<option value=""></option>
+	@foreach ($ciudades as $ciudad)
+
+		@if (old('ciudad_id', $persona->ciudad_id) == $ciudad->id)
+			<option value="{{ $ciudad->id }}" selected>
+				{{ $ciudad->nombre }} - {{ $ciudad->departamento->nombre }}
+			</option>
+		@else
+			<option value="{{ $ciudad->id }}">
+				{{ $ciudad->nombre }} - {{ $ciudad->departamento->nombre }}
+			</option>
+		@endif
+
+	@endforeach
+</select>
