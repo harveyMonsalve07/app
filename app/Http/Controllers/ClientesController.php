@@ -44,6 +44,7 @@ class ClientesController extends Controller
 
 		dd(request()->all());
 		//Crear persona si no existe
+		Cliente::create([]);
 		//Crear Cliente
 
 		//Direccionar apropiadamente
