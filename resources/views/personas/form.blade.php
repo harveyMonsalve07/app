@@ -26,22 +26,11 @@
 		<input type="number" class="form-control form-control-sm" name="numero_identificacion" id="numero_identificacion"  required value="{{ old('numero_identificacion', $persona->numero_identificacion) }}">
 	</div>
 	<div class="form-group col-md-4">
-		<label for="documento_ciudad">Ciudad:</label>
-		<select class="form-control form-control-sm" name="documento_ciudad" id="documento_ciudad" required>
-			<option value=""></option>
-			@foreach ($ciudades as $ciudad)
-
-				@if (old('documento_ciudad', $persona->documento_ciudad_id) == $ciudad->id)
-					<option value="{{ $ciudad->id }}" selected>
-						{{ $ciudad->nombre }} - {{ $ciudad->departamento->nombre }}
-					</option>
-				@else
-					<option value="{{ $ciudad->id }}">
-						{{ $ciudad->nombre }} - {{ $ciudad->departamento->nombre }}
-					</option>
-				@endif
-			@endforeach
-		</select>
+		<label for="documento_ciudad">Ciudad Expedición:</label>
+		@include('layouts.select_ciudades', [
+			'nombre_var' => 'documento_ciudad',
+			'var_inicial' =>  $persona->documento_ciudad_id 
+			])
 	</div>
 </div>
 
@@ -80,22 +69,10 @@
 
 <div class="form-group">
 	<label for="ciudad">Ciudad:</label>
-	<select class="form-control form-control-sm" name="ciudad" id="ciudad" required>
-		<option value=""></option>
-		@foreach ($ciudades as $ciudad)
-
-			@if (old('ciudad', $persona->ciudad_id) == $ciudad->id)
-				<option value="{{ $ciudad->id }}" selected>
-					{{ $ciudad->nombre }} - {{ $ciudad->departamento->nombre }}
-				</option>
-			@else
-				<option value="{{ $ciudad->id }}">
-					{{ $ciudad->nombre }} - {{ $ciudad->departamento->nombre }}
-				</option>
-			@endif
-
-		@endforeach
-	</select>
+		@include('layouts.select_ciudades', [
+			'nombre_var' => 'ciudad',
+			'var_inicial' =>  $persona->ciudad_id 
+			])
 </div>
 
 

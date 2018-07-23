@@ -24,7 +24,7 @@
 
 	<div class="form-group col-md-4">
 			<label for="codigo_dane">Código DANE:</label>
-			<input type="number" class="form-control" placeholder="Código DANE" name="codigo_dane" id="codigo_dane" min="1" max="99999" step="1" required value="{{ old('codigo_dane', $ciudad->nombre) }}">
+			<input type="number" class="form-control" placeholder="Código DANE" name="codigo_dane" id="codigo_dane" min="1" max="99999" step="1" required value="{{ old('codigo_dane', $ciudad->codigo_dane) }}">
 	</div>
 </div>
 <div class="form-group">

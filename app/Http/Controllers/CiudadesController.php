@@ -109,14 +109,16 @@ class CiudadesController extends Controller
 			'departamento_id' => 'required|integer',
 			'codigo_dane' => 'required|min:1|max:99999|integer'
 		]);
+		$ciudad = $ciudade;
 
-		$ciudade->nombre = $request->nombre;
-		$ciudade->departamento_id = $request->departamento_id;
-		$ciudade->codigo_dane = $request->codigo_dane;
+		$ciudad->nombre = $request->nombre;
+		$ciudad->departamento_id = $request->departamento_id;
+		$ciudad->codigo_dane = $request->codigo_dane;
+		$ciudad->save();
 
 		session()->flash('message', '¡Ciudad Editada! :D');
 
-		return redirect(route('ciudades.edit', $ciudade->id));
+		return redirect(route('ciudades.edit', $ciudad->id));
 	}
 
 	/**

@@ -19,11 +19,17 @@ class AppServiceProvider extends ServiceProvider
         //Variables formulario Persona
         view()->composer('personas.form', function ($view) {
             $view->with([
-                'ciudades' => \App\Ciudad::lista(),
                 'documento_tipos' => \App\DocumentoTipo::orderBy('tipo', 'ASC')->get()
             ]);
         });
 
+        //Variable $ciudades para llenar 
+        view()->composer('layouts.select_ciudades', function ($view){
+
+            $view->with([
+                'ciudades' => \App\Ciudad::lista()
+            ]);
+        });
     }
 
     /**

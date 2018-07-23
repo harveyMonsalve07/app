@@ -32,6 +32,10 @@ class Persona extends Model
 		return $this->hasOne(Cliente::class);
 	}
 	
+	public function propietario() {
+		return $this->hasOne(Propietario::class);
+	}
+	
 
 	public function actualizar($request)
 	{
@@ -53,8 +57,8 @@ class Persona extends Model
 	}
 	public static function crear($request)
 	{
-		
-		static::create([
+		$persona = new self;
+		return $persona->create([
 			'numero_identificacion' => $request->numero_identificacion,
 			'documento_tipo_id' => $request->documento_tipo,
 			'documento_ciudad_id' => $request->documento_ciudad,
@@ -67,6 +71,7 @@ class Persona extends Model
 			'segundo_nombre' => $request->segundo_nombre, 
 			'primer_apellido' => $request->primer_apellido, 
 			'segundo_apellido' => $request->segundo_apellido
-		]);
+		])->id;
+
 	}
 }

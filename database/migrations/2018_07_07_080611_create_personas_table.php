@@ -25,7 +25,7 @@ class CreatePersonasTable extends Migration
 			$table->string('segundo_apellido')->nullable();
 			$table->smallInteger('ciudad_id')->unsigned();
 			$table->string('direccion');
-			$table->integer('telefono')->nullable();
+			$table->integer('telefono')->nullable()->unsigned();
 			$table->string('email')->nullable();
 		});
 	}

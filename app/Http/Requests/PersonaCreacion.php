@@ -46,7 +46,9 @@ class PersonaCreacion extends FormRequest
 				'primer_apellido' => 'required|alpha|min:3',
 				'segundo_apellido' => 'required|alpha|min:3'
 			];
-			$this->nombre = '';
+			
+			$this->nombre = $this->primer_apellido." ".$this->segundo_apellido." ".$this->primer_nombre;
+			if ($this->segundo_nombre) $this->nombre .= " ".$this->segundo_nombre;
 		}
 
 

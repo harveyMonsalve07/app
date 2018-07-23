@@ -29,7 +29,7 @@ class PersonaActualizacion extends FormRequest
 			$caracteres_max = $documento_tipo->caracteres_max;
 		}
 
-		//Tipo
+		//Da formato al nombre dependiendo de su tipo de documento
 		if ($documento_tipo->tipo == 'N.I.T.') {
 			$extra_validacion = [
 				'nombre' => 'required|string'
@@ -46,7 +46,9 @@ class PersonaActualizacion extends FormRequest
 				'primer_apellido' => 'required|alpha|min:3',
 				'segundo_apellido' => 'required|alpha|min:3'
 			];
-			$this->nombre = '';
+
+			$this->nombre = $this->primer_apellido." ".$this->segundo_apellido." ".$this->primer_nombre;
+			if ($this->segundo_nombre) $this->nombre .= " ".$this->segundo_nombre;
 		}
 
 

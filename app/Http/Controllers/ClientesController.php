@@ -16,8 +16,8 @@ class ClientesController extends Controller
 	*/
 	public function index()
 	{
-		$clientes = Cliente::orderBy('nombre', 'ASC');
-		return view('clientes.index');
+		$clientes = Cliente::lista()->paginate(10);
+		return view('clientes.index', compact('clientes'));
 	}
 
 	/**
@@ -41,13 +41,8 @@ class ClientesController extends Controller
 	*/
 	public function store(ClienteCreacion $request)
 	{
-
-		dd(request()->all());
-		//Crear persona si no existe
-		Cliente::create([]);
-		//Crear Cliente
-
-		//Direccionar apropiadamente
+		Cliente::crear($request);
+		return redirect(route('clientes.index'));
 	}
 
 	/**
@@ -69,7 +64,8 @@ class ClientesController extends Controller
 	*/
 	public function edit(Cliente $cliente)
 	{
-
+		$persona = Persona::find($cliente->persona_id);
+		return view('clientes.edit', compact('cliente', 'persona'));
 	}
 
 	/**
@@ -81,7 +77,7 @@ class ClientesController extends Controller
 	*/
 	public function update(Request $request, Cliente $cliente)
 	{
-
+		
 	}
 
 	/**

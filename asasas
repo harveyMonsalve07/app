@@ -1,0 +1,53 @@
+warning: LF will be replaced by CRLF in app/Cliente.php.
+The file will have its original line endings in your working directory.
+warning: LF will be replaced by CRLF in app/Http/Controllers/ClientesController.php.
+The file will have its original line endings in your working directory.
+warning: LF will be replaced by CRLF in database/migrations/2018_07_09_070639_create_clientes_table.php.
+The file will have its original line endings in your working directory.
+[1mdiff --git a/app/Cliente.php b/app/Cliente.php[m
+[1mindex 93ce022..3c15986 100644[m
+[1m--- a/app/Cliente.php[m
+[1m+++ b/app/Cliente.php[m
+[36m@@ -6,6 +6,10 @@[m [muse Illuminate\Database\Eloquent\Model;[m
+ [m
+ class Cliente extends Model[m
+ {[m
+[32m+[m	[32mprotected $fillable = [[m
+[32m+[m		[32m'ciudad_id',[m
+[32m+[m		[32m'numero_identificacion'[m
+[32m+[m	[32m];[m
+ [m
+ 	public function persona()[m
+ 	{[m
+[1mdiff --git a/app/Http/Controllers/ClientesController.php b/app/Http/Controllers/ClientesController.php[m
+[1mindex 632eddd..08f13c8 100644[m
+[1m--- a/app/Http/Controllers/ClientesController.php[m
+[1m+++ b/app/Http/Controllers/ClientesController.php[m
+[36m@@ -41,12 +41,11 @@[m [mclass ClientesController extends Controller[m
+ 	*/[m
+ 	public function store(ClienteCreacion $request)[m
+ 	{[m
+[31m-[m
+ 		dd(request()->all());[m
+ 		//Crear persona si no existe[m
+[31m-		Cliente::create([]);[m
+[32m+[m		[32m// Cliente::create([]);[m
+ 		//Crear Cliente[m
+[31m-[m
+[32m+[m[41m		[m
+ 		//Direccionar apropiadamente[m
+ 	}[m
+ [m
+[1mdiff --git a/database/migrations/2018_07_09_070639_create_clientes_table.php b/database/migrations/2018_07_09_070639_create_clientes_table.php[m
+[1mindex e9547c8..6cf3409 100644[m
+[1m--- a/database/migrations/2018_07_09_070639_create_clientes_table.php[m
+[1m+++ b/database/migrations/2018_07_09_070639_create_clientes_table.php[m
+[36m@@ -16,7 +16,7 @@[m [mclass CreateClientesTable extends Migration[m
+         Schema::create('clientes', function (Blueprint $table) {[m
+             $table->increments('id');[m
+             $table->integer('persona_id');[m
+[31m-            $table->integer('vehiculo_tipo_id');[m
+[32m+[m[32m            $table->text('contacto');[m
+             $table->text('descripcion');[m
+             $table->timestamps();[m
+         });[m
